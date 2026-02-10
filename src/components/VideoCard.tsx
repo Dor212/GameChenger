@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { VideoItem } from "../data/videos";
 
 const THEMES = {
@@ -19,14 +20,9 @@ const THEMES = {
     },
 } as const;
 
-export default function VideoCard({
-    item,
-    onOpen,
-}: {
-    item: VideoItem;
-    onOpen: () => void;
-}) {
+export default function VideoCard({ item, onOpen }: { item: VideoItem; onOpen: () => void }) {
     const t = THEMES[item.category];
+    const [thumbOk, setThumbOk] = useState(false);
 
     return (
         <button
@@ -38,9 +34,22 @@ export default function VideoCard({
             <div className="relative aspect-[9/16] w-full overflow-hidden">
                 <div className="absolute inset-0" style={{ background: t.bg }} />
 
+                <img
+                    src={item.thumb}
+                    alt=""
+                    className={[
+                        "absolute inset-0 h-full w-full object-cover transition-opacity duration-300",
+                        thumbOk ? "opacity-100" : "opacity-0",
+                    ].join(" ")}
+                    loading="lazy"
+                    draggable={false}
+                    onLoad={() => setThumbOk(true)}
+                    onError={() => setThumbOk(false)}
+                />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-black/20" />
 
-                <div className="absolute inset-0 grid place-items-center">
+                <div className={["absolute inset-0 grid place-items-center transition-opacity duration-300", thumbOk ? "opacity-0" : "opacity-100"].join(" ")}>
                     <div className="gc-logo">
                         <img
                             src="/LogoGC.png"

@@ -32,8 +32,8 @@ const cloudinaryPosterUrl = (publicId: string) => {
 };
 
 const buildCategory = (category: CategoryKey, count: number) =>
-  Array.from({ length: count }, (_, i) => {
-    const n = i + 1;
+  Array.from({ length: count }, (_, idx) => {
+    const n = idx + 1;
     const publicId = `${category}${n}`;
     return {
       id: `${category}-${String(n).padStart(2, "0")}`,

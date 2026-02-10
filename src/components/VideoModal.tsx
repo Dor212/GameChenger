@@ -100,7 +100,6 @@ export default function VideoModal({
                                                     ref={videoRef}
                                                     key={item.src}
                                                     src={item.src}
-                                                    poster={item.thumb}
                                                     preload="auto"
                                                     controls
                                                     playsInline
