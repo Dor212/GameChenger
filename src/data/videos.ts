@@ -13,13 +13,22 @@ export const categories: Record<CategoryKey, { label: string; accent: string }> 
   branding: { label: "סרטוני תדמית", accent: "#FF4FD8" },
 };
 
-const CLOUD_NAME = (import.meta.env.VITE_CLOUDINARY_CLOUD_NAME as string | undefined)?.trim() || "dtjr9qzet";
-const TRANSFORMS = (import.meta.env.VITE_CLOUDINARY_VIDEO_TRANSFORMS as string | undefined)?.trim() || "f_mp4,vc_h264,ac_aac,q_auto:good";
+const CLOUD_NAME =
+  (import.meta.env.VITE_CLOUDINARY_CLOUD_NAME as string | undefined)?.trim() || "dtjr9qzet";
+
+const VIDEO_TRANSFORMS =
+  (import.meta.env.VITE_CLOUDINARY_VIDEO_TRANSFORMS as string | undefined)?.trim() ||
+  "f_mp4,vc_h264,ac_aac,q_auto:good";
 
 const cloudinaryVideoUrl = (publicId: string) => {
   const base = `https://res.cloudinary.com/${CLOUD_NAME}/video/upload`;
-  const tr = TRANSFORMS ? `/${TRANSFORMS}` : "";
+  const tr = VIDEO_TRANSFORMS ? `/${VIDEO_TRANSFORMS}` : "";
   return `${base}${tr}/${publicId}.mp4`;
+};
+
+const cloudinaryPosterUrl = (publicId: string) => {
+  const base = `https://res.cloudinary.com/${CLOUD_NAME}/video/upload`;
+  return `${base}/so_0,f_jpg,q_auto/${publicId}.jpg`;
 };
 
 const buildCategory = (category: CategoryKey, count: number) =>
@@ -31,7 +40,7 @@ const buildCategory = (category: CategoryKey, count: number) =>
       title: `${category} ${n}`,
       category,
       src: cloudinaryVideoUrl(publicId),
-      thumb: `/thumbs/${category}/${category}${n}.jpg`,
+      thumb: cloudinaryPosterUrl(publicId),
     } as VideoItem;
   });
 
