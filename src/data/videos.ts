@@ -28,7 +28,7 @@ const cloudinaryVideoUrl = (publicId: string) => {
 
 const cloudinaryPosterUrl = (publicId: string) => {
   const base = `https://res.cloudinary.com/${CLOUD_NAME}/video/upload`;
-  return `${base}/so_0,f_jpg,q_auto/${publicId}.jpg`;
+  return `${base}/so_1,f_jpg,q_auto/${publicId}.jpg`;
 };
 
 const buildCategory = (category: CategoryKey, count: number) =>

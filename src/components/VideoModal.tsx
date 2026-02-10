@@ -42,12 +42,21 @@ export default function VideoModal({
 
         v.pause();
         v.currentTime = 0;
+
+        v.muted = false;
+        v.volume = 1;
+
         v.load();
 
         const kick = async () => {
             try {
                 await v.play();
-            } catch { /* empty */ }
+            } catch {
+                try {
+                    v.muted = true;
+                    await v.play();
+                } catch { /* empty */ }
+            }
         };
 
         const raf = requestAnimationFrame(kick);
@@ -91,20 +100,19 @@ export default function VideoModal({
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             <div
                                                 className="relative aspect-[9/16] h-[92vh] max-h-[980px] w-auto overflow-hidden gc-cut-sm border shadow-glow"
-                                                style={{
-                                                    borderColor: t.border,
-                                                    background: t.bg,
-                                                }}
+                                                style={{ borderColor: t.border, background: t.bg }}
                                             >
                                                 <video
                                                     ref={videoRef}
                                                     key={item.src}
                                                     src={item.src}
                                                     preload="auto"
-                                                    controls
                                                     playsInline
                                                     autoPlay
-                                                    muted
+                                                    controls={false}
+                                                    muted={false}
+                                                    disablePictureInPicture
+                                                    controlsList="nodownload noplaybackrate noremoteplayback"
                                                     className="object-cover w-full h-full"
                                                 />
                                             </div>
@@ -124,7 +132,7 @@ export default function VideoModal({
                                                     href={whatsappHref}
                                                     target="_blank"
                                                     rel="noreferrer"
-                                                    className="inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold border gc-cut-sm gc-focus-ring border-gc-line/30 bg-black/35 text-gc-text hover:border-gc-line/55"
+                                                    className="px-4 py-3 text-sm font-semibold border gc-cut-sm gc-focus-ring border-gc-line/30 bg-black/35 text-gc-text hover:border-gc-line/55 inline-flex items-center gap-2"
                                                 >
                                                     <FaWhatsapp className="text-[18px]" />
                                                     דברו איתי
