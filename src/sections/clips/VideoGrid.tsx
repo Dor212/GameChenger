@@ -1,4 +1,4 @@
-import type { VideoItem } from "../data/videos";
+import type { VideoItem } from "../../data/videos";
 import VideoCard from "./VideoCard";
 
 export default function VideoGrid({

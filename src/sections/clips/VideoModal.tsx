@@ -1,7 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import type { VideoItem } from "../data/videos";
+import type { VideoItem } from "../../data/videos";
+
 
 const MODAL_THEME = {
     shootdays: {
@@ -132,7 +133,7 @@ export default function VideoModal({
                                                     href={whatsappHref}
                                                     target="_blank"
                                                     rel="noreferrer"
-                                                    className="px-4 py-3 text-sm font-semibold border gc-cut-sm gc-focus-ring border-gc-line/30 bg-black/35 text-gc-text hover:border-gc-line/55 inline-flex items-center gap-2"
+                                                    className="inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold border gc-cut-sm gc-focus-ring border-gc-line/30 bg-black/35 text-gc-text hover:border-gc-line/55"
                                                 >
                                                     <FaWhatsapp className="text-[18px]" />
                                                     דברו איתי

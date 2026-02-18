@@ -1,5 +1,6 @@
 import { useState } from "react";
-import type { VideoItem } from "../data/videos";
+import type { VideoItem } from "../../data/videos";
+
 
 const THEMES = {
     shootdays: {
