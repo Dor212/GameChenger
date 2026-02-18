@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import type { CategoryKey } from "../data/videos";
-import { categories } from "../data/videos";
+import type { CategoryKey } from "../../data/videos";
+import { categories } from "../../data/videos";
 
 export default function HudTabs({
     active,

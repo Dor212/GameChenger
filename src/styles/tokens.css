@@ -1,0 +1,31 @@
+:root {
+  --gc-bg: 3 10 14;
+  --gc-dark: 6 16 22;
+  --gc-panel: 10 26 36;
+  --gc-line: 120 160 175;
+  --gc-glow: 111 231 255;
+  --gc-text: 234 242 255;
+  --gc-muted: 164 190 205;
+
+  --gc-heading: "Bitcount Single";
+
+  --gc-radius: 18px;
+  --gc-radius-sm: 14px;
+
+  --gc-grad-hero: radial-gradient(
+      1200px 680px at 14% 14%,
+      rgba(111, 231, 255, 0.16),
+      transparent 55%
+    ),
+    radial-gradient(980px 560px at 86% 18%, rgba(255, 79, 216, 0.14), transparent 58%),
+    linear-gradient(180deg, rgba(6, 16, 22, 0.12), rgba(0, 0, 0, 0.65));
+
+  --gc-grad-page: radial-gradient(
+      1400px 900px at 25% 10%,
+      rgba(111, 231, 255, 0.10),
+      transparent 60%
+    ),
+    radial-gradient(1100px 720px at 80% 20%, rgba(87, 242, 194, 0.08), transparent 62%),
+    radial-gradient(1200px 720px at 70% 80%, rgba(255, 79, 216, 0.08), transparent 64%),
+    linear-gradient(180deg, rgba(3, 10, 14, 1), rgba(0, 0, 0, 1));
+}
